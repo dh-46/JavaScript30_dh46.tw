@@ -11,7 +11,7 @@
       <div class="clock-face">
       	<!-- 時分秒針 -->
         <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
+        <div class="hand min-hand" style="background: red "></div>
         <div class="hand second-hand"></div>
       </div>
     </div>
@@ -66,7 +66,7 @@
       /* 調整指針旋轉基準點 */
       transform-origin: 100%;
       /* 調整指針預設起點 時鐘歸零 */
-      transform: rotate(90deg);
+      /* transform: rotate(90deg); */
       /* 動畫變形間隔 */
       transition: all 0.05s;
       /* 控制指針動畫 */
@@ -96,11 +96,16 @@
       const secondsDegrees = ((seconds / 60) * 360) + 90;
 
       // 調整秒針角度
+      // if (secondsDegrees == ) {
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+      // } else {
+      //   console.log("重新開始數秒");
+      // }
+      
       minHand.style.transform = `rotate(${minsDeg}deg)`;
       hourHand.style.transform = `rotate(${hoursDeg}deg)`;
 
-  		// console.log(seconds);
+  		console.log(seconds);
   	}
   	setInterval(mySetTime,1000);
 	

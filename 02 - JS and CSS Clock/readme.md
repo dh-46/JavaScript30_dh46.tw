@@ -34,8 +34,10 @@ categories:
         - 取得指針物件，呼叫``style.transform = `rotate(${secondsDegrees}deg)`;``改變目前指針的角度
     4. 時針分針與秒針步驟相同，但有兩點要注意
         - 因為指針起始點的度數為90度，在動態增加度數時要在加上預設值90度。
-        - 當指針走一圈時會閃一下?
-
+        - 當指針走一圈時會閃一下
+            - 因為預設角度為90度，當秒針走完一圈時，又會被reset回90度原點，所以transition會逆時針閃回90度。
+            - 解法1: 取消歸零的``transform: rotate(90deg)``
+            - 解法2: 當角度為零的時候取消transition動畫。
 ## 重點筆記: CSS
 
 ### transform
