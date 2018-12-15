@@ -5,6 +5,10 @@ tags:
     - javascript
     - css
     - notes
+    - JS_date
+    - JS_setInterval
+    - CSS_transition
+    - CSS_transform
 categories:
     - 30_days_JS
 ---
@@ -77,6 +81,8 @@ categories:
 - 旋轉預設的基準點是左上角。(X-axis = 0, Y-axis = 0);
 - 通常搭配transform-origin使用。
 
+
+|------------------------|---------------|
 | rotate(90deg)          | 2D旋轉         |
 | rotate3d( x,y,z,angle) | 3D旋轉         |
 | rotateX(angle)         | 3D旋轉/沿著X軸 |
@@ -87,6 +93,7 @@ categories:
 #### 縮放 ``scale(x,y)``
 - 帶入的參數值是縮放倍數
 
+|----------------|---------------|
 | scale(x,y)     | 2D縮放         |
 | scale3d(x,y,z) | 3D縮放         |
 | scaleX(x)         | 3D縮放/沿著X軸 |
@@ -95,6 +102,7 @@ categories:
 
 #### 移動 ``translate``
 
+|--------------------|---------------|
 | translate(x,y)     | 2D移動         |
 | translate3d(x,y,z) | 3D移動         |
 | translateX(x)         | 3D移動/沿著X軸 |
@@ -104,6 +112,8 @@ categories:
 #### 歪斜 ``skew``
 
 - 元素歪斜變形
+
+|-------------|---------------|
 |skew(x-angle,y-angle)| 2D歪斜 | 
 |skewX(angle)| 2D歪斜/沿著X軸 |
 |skewY(angle)| 2D歪斜/沿著Y軸 |
@@ -169,15 +179,48 @@ function myStopFunction() {
 ```
 
 ### Date() object 時間物件
+- ``var myDate = new Date()`` 一定要new出物件才可取得時間
+- 預設是取得該瀏覽器時區的日期時間
+- JavaScript是以Milliseconds儲存時間 (since January 01, 1970, 00:00:00 UTC)
+- 
 
-#### getSecond/getMinutes
+|No.|Constructor|Description|
+|---|---|---|
+|1.|``new Date()``|取得現在的日期時間|
+|2.|``new Date(year, month, day, hours, minutes, seconds, milliseconds)``|自訂日期時間，參數順序不可變，但可依序從後面少寫|
+|3.|``new Date(milliseconds)``|單一一個參數都會被視為是milliseconds|
+|4.|``new Date(date string)``|用字串日期指定日期與格式|
+
+>備註:
+>1. 自訂時間的年份若為一或兩位數，將會自動變為19XX年分。
+>2. JavaScript 的月份是從零開始到11。 (一月是0)
+
+#### Output String Format
+1. 預設輸出格式是 Wed Mar 25 2015 08:00:00 GMT+0800 (台北標準時間)
+    - 轉成html顯示時會自動toString();
+2. ``toUTCString()`` 轉成UTC格式 Sat, 15 Dec 2018 06:50:46 GMT
+3. ``toDateString()`` Sat Dec 15 2018
+
+#### Input String Format
+|Type|Format|Descript|
+|---|---|---|
+|ISO Date|YYYY-MM-DD/YYYY-MM/YYYY/YYYY-MM-DDTHH:MM:SSZ|JS中最嚴謹|
+|Short Date|MM/DD/YYYY||
+|Long Date|MMM DD YYYY||
+
+#### Date String to Milliseconds
+只要是有效的日期字串都可以轉換
+``Date.parse("March 21, 2012");``
+
+#### getSecond/getMinutes/getHours
+
 ### JS: template string (ES6 樣板字串)
-
-#### rotate
 
 ## 延伸閱讀
 
-[W3SCHOOL](https://www.w3schools.com/csSref/css3_pr_transition.asp)
-https://www.w3schools.com/csSref/css3_pr_transform.asp 
-https://www.w3schools.com/csSref/css3_pr_transform-origin.asp 
-https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions 
+[W3SCHOOL_transistion](https://www.w3schools.com/csSref/css3_pr_transition.asp)  
+[W3SCHOOL_transform](https://www.w3schools.com/csSref/css3_pr_transform.asp)
+
+[W3SCHOOL_transform-origin](https://www.w3schools.com/csSref/css3_pr_transform-origin.asp)
+
+[Mozilla_Doc_transitions](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
