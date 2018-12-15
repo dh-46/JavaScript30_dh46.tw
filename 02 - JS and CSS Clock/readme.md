@@ -112,9 +112,9 @@ categories:
 | translateZ(z)         | 3D移動/沿著Z軸 |
 
 #### 歪斜 ``skew``
-
 - 元素歪斜變形
-
+ 
+|Property values| Descript|
 |-------------|---------------|
 |skew(x-angle,y-angle)| 2D歪斜 | 
 |skewX(angle)| 2D歪斜/沿著X軸 |
