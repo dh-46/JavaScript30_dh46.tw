@@ -236,7 +236,7 @@ Date物件本身帶有許多get方法，本次練習中使用到的為前三種�
 
 |Before|After|
 |---|---|
-|``block1.style.transform = 'rotate('+ input + 'deg)'``|`` block1.style.transform = `rotate(${secondsDegrees}deg)` ``|
+|``block1.style.transform = '"rotate("+ input + "deg)"'``|`` block1.style.transform = `rotate(${secondsDegrees}deg)` ``|
 
 ## 延伸閱讀
 
