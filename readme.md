@@ -11,4 +11,5 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 
 |Day|Title|Demo|Note|
 |---|-----|----|--------|
-|1|Drum Kit 鍵盤打擊器|||
+|1.|Drum Kit 鍵盤打擊器|||
+|2.|JS and CSS Clock 動態時鐘||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/02%20-%20JS%20and%20CSS%20Clock)|

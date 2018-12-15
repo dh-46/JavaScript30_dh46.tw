@@ -81,7 +81,7 @@ categories:
 - 旋轉預設的基準點是左上角。(X-axis = 0, Y-axis = 0);
 - 通常搭配transform-origin使用。
 
-
+|Property values| Descript|
 |------------------------|---------------|
 | rotate(90deg)          | 2D旋轉         |
 | rotate3d( x,y,z,angle) | 3D旋轉         |
@@ -93,6 +93,7 @@ categories:
 #### 縮放 ``scale(x,y)``
 - 帶入的參數值是縮放倍數
 
+|Property values| Descript|
 |----------------|---------------|
 | scale(x,y)     | 2D縮放         |
 | scale3d(x,y,z) | 3D縮放         |
@@ -102,6 +103,7 @@ categories:
 
 #### 移動 ``translate``
 
+|Property values| Descript|
 |--------------------|---------------|
 | translate(x,y)     | 2D移動         |
 | translate3d(x,y,z) | 3D移動         |
@@ -182,7 +184,6 @@ function myStopFunction() {
 - ``var myDate = new Date()`` 一定要new出物件才可取得時間
 - 預設是取得該瀏覽器時區的日期時間
 - JavaScript是以Milliseconds儲存時間 (since January 01, 1970, 00:00:00 UTC)
-- 
 
 |No.|Constructor|Description|
 |---|---|---|
@@ -212,15 +213,36 @@ function myStopFunction() {
 只要是有效的日期字串都可以轉換
 ``Date.parse("March 21, 2012");``
 
-#### getSecond/getMinutes/getHours
+#### get方法
+Date物件本身帶有許多get方法，本次練習中使用到的為前三種。
 
-### JS: template string (ES6 樣板字串)
+|Method|Descript|
+|---|---|
+|getSeconds()|現在秒數|
+|getMinutes()|現在的分|
+|getHours()|24制的小時|
+|getTime()|milliseconds|
+|getDate()|數字日期|
+|getMonth()|數字月份(從零開始)|
+|getFullYear()|四位數年分|
+|getDay()|數字星期(從零開始)|
+|Date.now()|ES5 現在時間|
+
+### Template String (ES6 樣板字串)
+
+>樣板字面值（Template literals）是允許嵌入運算式的字串字面值（string literals）。你可以透過樣板字面值來使用多行字串及字串內插（string interpolation）功能。他們在 ES2015 規範的先行版本中被稱為「樣板字串（template strings）」。
+
+- 透過反引號夾住字串，並在其中使用``${變數}``的表示法，可省去過去使用加號串接字串的方式。
+
+|Before|After|
+|---|---|
+|``block1.style.transform = 'rotate('+ input + 'deg)'``|`` block1.style.transform = `rotate(${secondsDegrees}deg)` ``|
 
 ## 延伸閱讀
 
-[W3SCHOOL_transistion](https://www.w3schools.com/csSref/css3_pr_transition.asp)  
+[W3SCHOOL_transistion](https://www.w3schools.com/csSref/css3_pr_transition.asp)
 [W3SCHOOL_transform](https://www.w3schools.com/csSref/css3_pr_transform.asp)
-
 [W3SCHOOL_transform-origin](https://www.w3schools.com/csSref/css3_pr_transform-origin.asp)
-
 [Mozilla_Doc_transitions](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
+[W3SCHOOL_Date](https://www.w3schools.com/js/js_dates.asp)
+[樣板字串](https://wcc723.github.io/javascript/2017/12/22/javascript-template-string/)
