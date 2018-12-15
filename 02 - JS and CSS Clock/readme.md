@@ -240,9 +240,9 @@ Date物件本身帶有許多get方法，本次練習中使用到的為前三種�
 
 ## 延伸閱讀
 
-[W3SCHOOL_transistion](https://www.w3schools.com/csSref/css3_pr_transition.asp)
-[W3SCHOOL_transform](https://www.w3schools.com/csSref/css3_pr_transform.asp)
-[W3SCHOOL_transform-origin](https://www.w3schools.com/csSref/css3_pr_transform-origin.asp)
-[Mozilla_Doc_transitions](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
-[W3SCHOOL_Date](https://www.w3schools.com/js/js_dates.asp)
-[樣板字串](https://wcc723.github.io/javascript/2017/12/22/javascript-template-string/)
+[W3SCHOOL_transistion](https://www.w3schools.com/csSref/css3_pr_transition.asp)  
+[W3SCHOOL_transform](https://www.w3schools.com/csSref/css3_pr_transform.asp)  
+[W3SCHOOL_transform-origin](https://www.w3schools.com/csSref/css3_pr_transform-origin.asp)  
+[Mozilla_Doc_transitions](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)  
+[W3SCHOOL_Date](https://www.w3schools.com/js/js_dates.asp)  
+[樣板字串](https://wcc723.github.io/javascript/2017/12/22/javascript-template-string/)  
