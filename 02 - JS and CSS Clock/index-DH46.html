@@ -11,7 +11,7 @@
       <div class="clock-face">
       	<!-- 時分秒針 -->
         <div class="hand hour-hand"></div>
-        <div class="hand min-hand" style="background: red "></div>
+        <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
       </div>
     </div>
@@ -63,17 +63,36 @@
       background: black;
       position: absolute;
       top: 50%;
+
+      /* added */
       /* 調整指針旋轉基準點 */
       transform-origin: 100%;
       /* 調整指針預設起點 時鐘歸零 */
-      /* transform: rotate(90deg); */
-      /* 動畫變形間隔 */
-      transition: all 0.05s;
+      transform: rotate(90deg);
+      /* 動畫變形間隔 (配合JS將預設transition關閉) */
+      /* transition: all 0.05s; */
       /* 控制指針動畫 */
       transition-timing-function: cubic-bezier(0, 0.79, 0.91, 1.41);
-
+    }
+    
+    /* dh46 added */
+    .second-hand {
+        height: 4px;
+        background: red;
     }
 
+    .min-hand {
+        background: white;
+        width: 40%;
+        left: 10%;
+    }
+
+    .hour-hand {
+        background: black;
+        width: 30%;
+        left: 20%;
+    }
+    
   </style>
 
   <script>
@@ -87,25 +106,40 @@
 
       // 取得現在時分秒
       const hours = now.getHours();
+      console.log(hours);
       const mins = now.getMinutes();
       const seconds = now.getSeconds();
 
-      // 換算成角度 (因為預設起始點是90度，所以要加90哦)
-      const hoursDeg = ((hours / 12) * 360) + 90;
-      const minsDeg = ((mins / 60) * 360) + 90;
-      const secondsDegrees = ((seconds / 60) * 360) + 90;
-
-      // 調整秒針角度
-      // if (secondsDegrees == ) {
-      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-      // } else {
-      //   console.log("重新開始數秒");
-      // }
+      // 換算成角度 (因為預設起始點是90度，所以要加90)
+      // 原本設定公式指針不會隨時間走動。
+      // const secondsDeg = ((seconds / 60) * 360) + 90;
+      // const minsDeg = ((mins / 60) * 360) + 90;
+      // const hoursDeg = ((hours / 12) * 360) + 90;
       
-      minHand.style.transform = `rotate(${minsDeg}deg)`;
-      hourHand.style.transform = `rotate(${hoursDeg}deg)`;
+      // 修改公式
+      const secondsDeg = 90 + ((seconds / 60) * 360);
+      // 原本分針角度再加上每次秒針移動時所增加的角度 (每一分間隔為6度)
+      const minsDeg = 90 + ((mins / 60) * 360) + ((seconds / 60) * 6);
+      // 原時針角度再加上每次分針移動時所增加的角度 (每一時間隔為30度)
+      const hoursDeg = 90 + ((hours / 12) * 360) + ((mins/60) * 30);
 
-  		console.log(seconds);
+
+      // 解決指針一圈後會閃一下 => 阻止歸零動畫
+      function setRotateDeg(deg){
+        if (deg === 90) {
+          document.querySelector('.hand').style.transition = 'all 0s';
+        } else {
+          document.querySelector('.hand').style.transition = 'all 0.05s';
+        }
+        return `rotate(${deg}deg)`;
+      }
+      
+      // 調整時分秒針角度
+      secondHand.style.transform = setRotateDeg(secondsDeg);
+      minHand.style.transform = setRotateDeg(minsDeg);
+      hourHand.style.transform = setRotateDeg(hoursDeg);
+
+  		// console.log(seconds);
   	}
   	setInterval(mySetTime,1000);
 	
