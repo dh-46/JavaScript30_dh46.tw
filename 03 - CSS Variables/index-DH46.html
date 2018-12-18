@@ -10,7 +10,7 @@
   <div class="controls">
     <label for="spacing">Spacing:</label>
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
-
+	
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
@@ -21,6 +21,21 @@
   <img src="03_pic.jpg">
 
   <style>
+	:root {
+		--base:  #ffc600;
+		--spacing: 10px;
+		--blur: 10px;
+	}
+
+	img {
+		padding: var(--spacing);
+		background: var(--base);
+		filter: blur(var(--blur));
+	}
+
+	.hl {
+		color: var(--base);
+	}
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,6 +60,31 @@
   </style>
 
   <script>
+	const inputs = document.querySelectorAll('.controls input');
+
+	// 處理update
+	function handleUpdate() {
+		// console.log(this.value);
+		// 透過dataset物件取得data-
+		// console.log(this.dataset);
+		// 取得被觸發的元素名稱 (name attribute)
+		// console.log(this.name);
+
+		// dataset有sizing就指定給suffix，沒有就為空 (像是color就沒有'px'做為後綴)
+		// 常數指定中使用or判斷? (沒學過? 邏輯運算子的使用)
+		const suffix = this.dataset.sizing || '';
+
+		// setProperty => key,value
+		// 為什麼是帶入this.name => HTML中name屬性的值有事先調整好對應CSS的變數名稱
+		document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
+	}
+
+	// 透過forEach取出每個input，並加上addEventListener (change)
+	inputs.forEach(input => input.addEventListener('change', handleUpdate));
+	// 增加mousemove的傾聽器，使其滑動bar也會有效果
+	// 但是這邊並不完整，因為目前的設計是只要滑鼠經過input上方都會觸發 (這邊可以再多加其他傾聽器，例如滑鼠放掉才改變之類的)
+	inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
