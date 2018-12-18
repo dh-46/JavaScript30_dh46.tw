@@ -25,6 +25,11 @@
 		--base:  #ffc600;
 		--spacing: 10px;
 		--blur: 10px;
+		--myFont: 'Times New Roman';
+	}
+
+	* {
+		font-family: var(--myFont);
 	}
 
 	img {
@@ -85,6 +90,7 @@
 	// 但是這邊並不完整，因為目前的設計是只要滑鼠經過input上方都會觸發 (這邊可以再多加其他傾聽器，例如滑鼠放掉才改變之類的)
 	inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
+	
   </script>
 
 </body>
