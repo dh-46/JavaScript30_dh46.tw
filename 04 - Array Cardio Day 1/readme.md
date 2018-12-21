@@ -8,4 +8,8 @@ categories:
 ---
 # Day 4_Array Cardio
 ## 練習目標
+JS陣列方法與操作練習。
+
 ## 重點筆記
+### filter()
+
