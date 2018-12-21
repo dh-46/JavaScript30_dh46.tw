@@ -26,6 +26,9 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      
+      /* panels is a flex container */
+      display: flex;
     }
 
     .panel {
@@ -43,7 +46,21 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+
+      /* 平均分配 */
+      flex: 1;
+      
+      
+      /* panel is a flex item and also a flex container */
+      display: flex;
+      /* flex 方向調整 */
+      flex-direction: column;
+      /* 水平置中 */
+      justify-content: center;
+      /* 上下置中 */
+      align-items: center;
     }
+
 
     .panel1 { background-image:url(pic/panel1.jpg); }
     .panel2 { background-image:url(pic/panel2.jpg); }
@@ -56,6 +73,41 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+
+      /* 增加邊線以便設定 */
+      /* border: 1px red solid; */
+      /* 上下水平展開 */
+      flex: 1 0 auto;
+      /* 讓它成為container */
+      display: flex;
+      /* 水平置中 */
+      justify-content: center;
+      /* 上下置中 */
+      align-items: center;
+    }
+
+    .panel > *:first-child {
+      /* panel底下的第一個子元素 */
+      /* 隱藏第一個 => 擠到最上面 */
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child {
+      /* panel底下的第一個子元素 */
+      /* 顯示第一個 => 調回來 */
+      transform: translateY(0%);
+    }
+
+    .panel > *:last-child {
+      /* panel底下的最後一個子元素 */
+      /* 隱藏最後一個 => 擠到最下面 */
+      transform: translateY(100%);
+    }
+    
+    .panel.open-active > *:last-child {
+      /* panel底下的最後一個子元素 */
+      /* 顯示最後一個 */
+      transform: translateY(0%);
     }
 
     .panel p {
@@ -71,6 +123,8 @@
 
     .panel.open {
       font-size: 40px;
+      /* 展開比例5 */
+      flex: 5;
     }
 
   </style>
@@ -105,6 +159,31 @@
   </div>
 
   <script>
+    // 1. 取得要操作的父元素
+    const panels = document.querySelectorAll('.panel');
+    
+    // 3. 負責處理flexbox縮放的效果
+    function toggleOpen() {
+      this.classList.toggle('open');
+    }
+
+    // 4. 縮放後要觸發的字體滑入動畫
+    // **這裡要注意的是，字體是在flex結束後觸發的動畫，所以透過傳入引數e，
+    // 取得e.propertyName來判斷是哪一個transitionend。
+    // 另外，在不同瀏覽器的propertyName不同(Chrome是flex-grow/Safari是flex)，
+    // 所以在條件上使用includes('flex')。
+    function toggleActive(e){
+      // console.log(e.propertyName);
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    // 2. 利用forEach取得NodeList中的元素，並加上事件傾聽器
+    panels.forEach(panel => {
+      panel.addEventListener('click', toggleOpen);
+      panel.addEventListener('transitionend', toggleActive);
+    });
 
   </script>
 
