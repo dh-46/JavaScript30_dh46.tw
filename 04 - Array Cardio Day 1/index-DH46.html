@@ -106,6 +106,7 @@
 
     console.log(totalYears);
 
+    
     /* 
       reduce(reducer, initValue): 可以跟前一個選項進行運算，要呼叫自訂的函式reducer
       reducer函式可帶入的參數 
@@ -116,7 +117,8 @@
       initValue: 初始值
       P.S. reduce/filter/sort 基本上都是loop每一個陣列選項交給自訂的函式處理
       */  
-
+    
+    // ------------------------------------------------------------
     // 5. Sort the inventors by years lived
 
     const oldest = inventors.sort((a, b) => {
@@ -136,17 +138,90 @@
 
     console.table(oldest);
 
+    // ------------------------------------------------------------
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris (Run on this page)
+
+    // a. get the DOM of that page
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // // 註: querySelector 可以尋訪任何element下的子element
+    
+    // // b. 把links透過map轉換成list of names(textContent)
+    // // 註: 因為links是node list 要轉換成list
+    // // 轉換有兩個方法
+    // // 1. Array.from(category.querySelectorAll('a'));
+    // // 2. [...category.querySelectorAll('a')];  // ES6方法
+
+    // // c. 透過filter取出streetName再透過includes篩出結果。
+    // const de = links
+    //             .map(link => link.textContent)
+    //             .filter(streetName => streetName.includes('de'));
+    
+    // console.log(de);
 
 
+    // ------------------------------------------------------------
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alpha = people.sort(function (lastOne, nextOne){
+      // 這裡拿到的last/next是長這樣'Beck, Glenn'
+      // 透過split()解構姓名，但是split回傳的是陣列 ["Becker", "Carl"]
+      // const parts = lastOne.split(', ');
+      // 修改變數名稱[last, first]承接回傳的陣列
+      // 資料部分OK，就可以開始比較
+      // 取得要比較的兩個值的姓與名
+      // 回傳三元運算式
+      const [aLast,aFirst] = lastOne.split(', ');
+      const [bLast,bFirst] = nextOne.split(', ');
+      //console.log(last, first);
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alpha);
 
+    // ES6版本
+    const alpha2 = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+    });
+
+    console.table(alpha2);
+    // ------------------------------------------------------------
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    
+    // 讓reduce()完後回傳一個物件，物件內的key,value就是該item名稱與出現次數
+    // 每loop一次就是obj[item]++; => 那一個資料出現一次
+    // a. 如果知道該陣列內有哪些類別的資料，可以在初始值的物件中先寫好 {car:0, van: 0}
+    // 如果已經知道資料內的選項的話
+    const transportation2 = data.reduce((obj,item) => {
+        obj[item]++;
+        return obj;
+    }, {
+      car:0,
+      truck:0,
+      bike:0,
+      walk:0,
+      van:0
+    });
+    console.log(transportation2);
 
+    // b. 反之，寫條件判斷
+    const transportation = data.reduce(function (obj, item){
+      if (!obj[item]) {
+        // 若該項不存在就初始化
+        obj[item] = 0;
+        // console.log(item);
+      }
+      obj[item]++;
+      // console.log(obj[item]);
+      return obj;
+    }, {});
+    
+    console.log(transportation);
+    
   </script>
 </body>
 </html>
