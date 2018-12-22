@@ -1,6 +1,6 @@
 ---
 title: 30 days JS--Day5_Flex Panel Gallery
-date: 2018-12-19 21:40:00
+date: 2018-12-20 11:16:00
 tags:
     - notes
     - CSS
@@ -86,10 +86,53 @@ categories:
 
 ### transform: translateY();
 
-這邊的動畫效果是因為作者有事先寫好transition的動畫
+``translateY()``沿著Y軸移動。
 
-### need to review CSS selector
+```css
+.panel > *:first-child {
+    /* panel底下的第一個子元素 */
+    /* 隱藏第一個 => 擠到最上面 */
+    transform: translateY(-100%);
+}
 
-### JS: addEventListener > transitionend
+.panel.open-active > *:first-child {
+    /* panel底下的第一個子元素 */
+    /* 顯示第一個 => 調回來 */
+    transform: translateY(0%);
+}
+```
 
-補充: js function 有加括號代表式啟動
+> BTW 這邊的動畫效果是因為作者有事先寫好transition的設定。  
+> CSS selector 要多複習
+
+### JS: addEventListener & classList.toggle()
+
+1. ``querySelectorAll()``取得要操作的父元素。(NodeList)
+    ```javascript
+    const panels = document.querySelectorAll('.panel');
+    ```
+2. 利用``forEach()``取得要操作的元素，並加上Listener。
+    ```javascript
+    panels.forEach(panel => {
+        panel.addEventListener('click', toggleOpen);
+        panel.addEventListener('transitionend', toggleActive);
+    });
+    ```
+3. Create Function for flexbox animation
+    ```javascript
+    function toggleOpen() {
+        this.classList.toggle('open');
+    }
+    ```
+4. Create Function for text animation (Slide-in)
+    > 這裡要注意的是，字體是在flex結束後觸發的動畫，所以透過傳入引數e，取得e.propertyName來判斷是哪一個transitionend。另外，在不同瀏覽器的propertyName不同(Chrome是flex-grow/Safari是flex)，所以在條件上使用includes('flex')。
+    ```javascript
+    function toggleActive(e) {
+        // console.log(e.propertyName);
+        if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+        }
+    }
+    ```
+
+> 補充: js function 有加括號表示執行
