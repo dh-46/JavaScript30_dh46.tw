@@ -26,16 +26,78 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+
+    // const isAdult = people.some(function(person){
+    //   // 傳入的這個函式: 檢查是否陣列中的每個項目都符合其條件
+    //   const currentYear = (new Date()).getFullYear();
+    //   if (currentYear - person.year >= 19 ) {
+    //     return true
+    //     };
+    // });
+
+    // 改寫_1
+    // const isAdult1 = people.some(person => {
+    //   const currentYear = (new Date()).getFullYear();
+    //   return currentYear - person.year >= 19;
+    // })
+
+    // 改寫_2
+    const isAdult2 = people.some(person => ((new Date()).getFullYear()) - person.year >= 19);
+
+    // 補充: 變數兩邊加上{}，會以物件方式呈現，可以看到變數名稱與值。
+    console.log({isAdult2});
+
+    // ---------------------------------------------------
     // Array.prototype.every() // is everyone 19 or older?
 
+    const allAdult = people.every(person => ((new Date()).getFullYear()) - person.year >= 19);
+
+    console.log({allAdult});
+
+
+    // ---------------------------------------------------
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    // const findId = comments.find(function(comment){
+    //   if (comment.id === 823423) {
+    //     return true;
+    //   }
+    // });
+    // console.log({findId});
+    // 改寫
+    const findId2 = comments.find(comment => comment.id === 823423);
+    console.log({findId2});
+
+
+    // ---------------------------------------------------
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
 
+    // 取得index
+    const index = comments.findIndex(comment => (comment.id === 823423));
+    console.log("index: " + index);
+
+    // 刪除有兩招
+    // 1. 
+    // splice => changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+    // splice(開始切的index,結束切的index);
+    // comments.splice(index,1)
+    // console.table(comments);
+
+    // 2. 新增一個修改過的新陣列
+    // splice => a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). 
+    // The original array will not be modified.
+    // [0|1|2|3|4] => slice(0,2) => 切出來的是 [0|1] => 從第一條線開始算啦
+    // 要記得spread 因為slice回傳的也是陣列，沒有展開的話會是二維
+    const newComments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ];
+    console.table(newComments);
+    
   </script>
 </body>
 </html>
