@@ -15,8 +15,108 @@
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  // 外部資料 JSON格式
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-</script>
+  /*
+    主要流程
+    1. 取得外部資料
+    2. 取得使用者在對話框輸入的文字內容
+    3. 利用使用者輸入的文字，過濾出陣列中的答案，並呈現在畫面上。
+  */
+
+  // 承接外部資料
+  const cities = [];
+
+  // 取得外部資料 fetch(); => 瀏覽器內建API
+  // fetch(); 會回傳一個 promise
+  // const prom = fetch(endpoint);
+  // console.log(prom);
+
+  // 使用.then() => https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+  // 這裡的blob只是wes bos定的參數名稱，但是一般的 Blob（Binary Large Object）物件代表了一個相當於檔案（原始資料）的不可變物件。
+  // fetch回傳的是Promise物件，透過then方法回傳一個Response的原始資料(raw data)，而這個原始資料可以是image/music/json/...etc.
+  // 那這邊我們知道遠端回來的是JSON，不過不能直接使用JSON.parse來解析，因為回傳回來的並不是真正我們要的JSON raw data。
+  // 而是要再使用Response._prototye_.json()，並且該方法會再回傳一個Promise，之後再使用then()讓其callback參數，回傳真正的陣列data。
+
+  /*
+    補充:
+    如何把data的資料放進cities陣列?
+    1. 因為宣告為const所以不能直接 cities = data，要改cities宣告為let。
+    2. 使用cities.push? => 會變成二維陣列 cities = [[data],1,2,3,4];
+        因為push方法是將該參數放入陣列中。
+        解: 使用ES6 Spread ... => cities.push(...data)
+  */
+  fetch(endpoint)
+          .then(blob => blob.json())
+          .then(data => cities.push(...data));
+
+  /*
+    原始JSON裡的物件
+    city: "New York"
+    growth_from_2000_to_2013: "4.8%"
+    latitude: 40.7127837
+    longitude: -74.0059413
+    population: "8405837"
+    rank: "1"
+    state: "New York"
+  */
+
+  // 篩選資料的方法
+  // 傳入要篩選的單字與原始資料
+  function findMatches(wordToMatch, cities) {
+
+    // 回傳cities的子集合(搜尋結果?)
+    return cities.filter(place => {
+      // 處理是否有相符合的城市或州
+      // 使用正規表示法(要過濾的字, 規則)
+      // g => global; 
+      const regX = new RegExp(wordToMatch, 'gi');
+
+      // 其中為真便為真
+      return place.city.match(regX) || place.state.match(regX);
+    });
+  }
+
+  // 最後，將人口數字加上逗號(正規表示法...)
+  function numWithComma(num){
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+
+  // 將篩選好的資料顯示出來
+  function displayMatches(){
+    // 當輸入框有改變這裡會被呼叫
+    // 拿到搜尋結果
+    const matchesArray = findMatches(this.value, cities);
+    
+    // 改變畫面
+    const htmlTags = matchesArray.map(place => {
+      // highlight the search word
+      // 這裡的this.value => 使用者輸入的字串
+      // 找到使用者輸入的字串，然後換成有效果的span
+      const regex = new RegExp(this.value, 'gi');
+      const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+      const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+      return `
+        <li>
+          <span class="name">${cityName}, ${stateName}</span>
+          <span class="population">${numWithComma(place.population)}</span>
+        </li>
+        `;
+    }).join('');
+    console.log(htmlTags);
+    suggestions.innerHTML = htmlTags;
+  }  
+
+  // 輸入框
+  const searchInput = document.querySelector('.search');
+  searchInput.addEventListener('change', displayMatches);
+  searchInput.addEventListener('keyup', displayMatches);
+
+  // 清單顯示
+  const suggestions = document.querySelector('.suggestions');
+  
+  </script>
   </body>
 </html>
