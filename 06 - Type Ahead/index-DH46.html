@@ -40,12 +40,7 @@
   // 而是要再使用Response._prototye_.json()，並且該方法會再回傳一個Promise，之後再使用then()讓其callback參數，回傳真正的陣列data。
 
   /*
-    補充:
-    如何把data的資料放進cities陣列?
-    1. 因為宣告為const所以不能直接 cities = data，要改cities宣告為let。
-    2. 使用cities.push? => 會變成二維陣列 cities = [[data],1,2,3,4];
-        因為push方法是將該參數放入陣列中。
-        解: 使用ES6 Spread ... => cities.push(...data)
+    
   */
   fetch(endpoint)
           .then(blob => blob.json())
