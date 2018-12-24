@@ -16,8 +16,8 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 |3.|CSS Variables CSS 變數||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/03%20-%20CSS%20Variables)|
 |4.|Array Cardio Day 1 陣列操作練習 1||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/04%20-%20Array%20Cardio%20Day%201)|
 |5.|Flex Panel Gallery 彈性盒子練習||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/05%20-%20Flex%20Panel%20Gallery)|
-|6.|Type Ahead |||
-|7.|Array Cardio Day 2|||
+|6.|Type Ahead 美國城市與州名搜尋||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/06%20-%20Type%20Ahead)|
+|7.|Array Cardio Day 2 陣列操作練習 2||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/07%20-%20Array%20Cardio%20Day%202)|
 |8.|Fun with HTML5 Canvas|||
 |9.|Dev Tools Domination|||
 |10.|Hold Shift and Check Checkboxes|||
