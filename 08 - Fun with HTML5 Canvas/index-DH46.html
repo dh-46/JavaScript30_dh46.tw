@@ -7,6 +7,101 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvas = document.querySelector('canvas');
+  // 取得Canvas繪圖Context (有2d也有3d)
+  const ctx = canvas.getContext('2d');
+  // 設定畫面長寬
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  // 設定畫筆顏色
+  ctx.strokeStyle = '#BADA55';
+  
+  // 每次繪圖的線段交會的形狀
+  // determines the shape used to join two line segments where they meet. 
+  // "bevel" 切平? || "round" 圓角 || "miter" 銳角
+  ctx.lineJoin = 'round';
+
+  // 線段結尾的形狀
+  // determines the shape used to draw the end points of lines.
+  // "butt" (預設值，直角) || "round" 圓角 || "square" 在端點加上等寬但半高的正方形
+  ctx.lineCap = 'round';
+  
+  // 畫筆粗細
+  ctx.lineWidth = '12';
+
+  // 補充: globalCompositeOperation => 不同的疊圖效果?
+  // ctx.globalCompositeOperation = 'multiply';
+
+  // 設定一個flag作為滑鼠點擊著狀態的識別
+  let isDrawing = false;
+  // 設定一個線段的起始點
+  // 一條線段必會有起點與結束
+  let lastX = 0;
+  let lastY = 0;
+
+  // 2. 畫筆顏色
+  let hue = 0;
+
+  // 3. 畫筆遞增或遞減的判斷
+  let direction = true;
+  
+  function draw(e) {
+    // 當狀態非滑鼠按著的時候，不畫圖，return!
+    if (!isDrawing){ return;}
+    console.log(e);
+
+    // 2. 畫筆顏色動態變色 => hsl(hue, saturation, lightness)
+    // hue 為 0~360 整個色譜一圈 超過360就像度數一樣會直接回到紅色重新開始
+    ctx.strokeStyle = `hsl(${hue}, 100% , 50%)`;
+    // 開始畫圖
+    ctx.beginPath();
+    // 起始
+    ctx.moveTo(lastX,lastY);
+    // 結束
+    ctx.lineTo(e.offsetX,e.offsetY);
+
+    // 下stroke()後才會真正畫出
+    ctx.stroke();
+    // 原本的起始點都一直在0,0 => 修正起始點 (ES6: destructoring an array)
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    // 讓畫筆顏色隨點按變化
+    hue++;
+    // 重設hsl hue
+    if (hue >= 360){
+      hue = 0;
+    }
+
+    // 調整畫筆粗細
+    // 當畫筆粗度100就遞減，反之遞增
+    if (ctx.lineWidth >= 40 || ctx.lineWidth <= 2) {
+      direction = !direction;
+    }
+
+    if (direction) {
+      ctx.lineWidth++;
+    } else {
+      ctx.lineWidth--;
+    }
+  }
+
+  // 增加事件傾聽器 => 滑鼠移動時 => 取得滑鼠移動時的座標資訊
+  canvas.addEventListener('mousemove', draw);
+  // 傾聽滑鼠點擊
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    // 解決開頭永遠都是0,0 而非滑鼠點擊的第一個位置
+    // 解決一直都是同一條線
+    // => 每次點滑鼠，都把該點設為那個線段的起始點
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+
+  canvas.addEventListener('mouseup', () => isDrawing = false );
+  // 滑鼠離開範圍時也不畫
+  canvas.addEventListener('mouseout', () => isDrawing = false );
+
+
 </script>
 
 <style>
