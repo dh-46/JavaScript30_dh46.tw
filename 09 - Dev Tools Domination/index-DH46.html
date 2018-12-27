@@ -18,29 +18,74 @@
     }
 
     // Regular
+    console.log('Hello world');
 
     // Interpolated
+    console.log('Hello I\'m %s string!', 'Daniel');
 
-    // Styled
+    // 也可以直接使用ES6的技巧
+    var var1 = 'Daniel';
+    console.log(`Hello! This is ${var1}!`);
+
+    // Styled (console.log 字體樣式: font-size/bg/)
+    console.log('%c I am some great text', 'font-size:50px; color:red; background:blue; text-shadow: 10px 10px 0 white');
 
     // warning!
-
+    console.warn('Oh Sh*t!');
     // Error :|
+    console.error('Buuuuug!');
+    // Error & warn 都會給出錯的行數
 
     // Info
-
+    console.info('info啦');
+    
     // Testing
+    console.assert(1 === 2 , 'Wrong!');
+    // 只有前面的判斷錯誤時，後面的才會執行。
 
-    // clearing
+    // clearing 清空console
+    console.clear();
 
-    // Viewing DOM Elements
+    // Viewing DOM Elements 查看DOM元素
+    const p = document.querySelector('p');
+    console.log(p); // 只會以純文字顯示
+    console.dir(p); // 顯示整個obj
 
-    // Grouping together
+    // Grouping together 群組顯示
+    // console.group('這裡寫標籤名稱');
+    // 改用 console.groupCollapsed('這裡寫標籤名稱'); 預設會收合
+    // console.groupEnd('寫一樣的標籤名稱，才會是一個群組');
+    dogs.forEach( dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} year old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog year old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    // 計算該文字/數字/DOM/Obj 使用的次數
+    console.count('Hello');
+    console.count('Hello');
+    console.count('Hello');
+    console.count('Noooo');
+    console.count(13);
+    console.count('Noooo');
+    console.count(13);
+    console.count('Hello');
 
-    // timing
+    // timing 計算該方法花了多少時間
+    // 另外一個方法performance.now();?
+    console.time('Timing Test');
+    console.groupCollapsed('Count to 100');
+    for (var i=0; i<=100; i++){
+      console.log(i);
+    }
+    console.groupEnd('Count to 100');
+    console.timeEnd('Timing Test');
 
+    // table
+    console.table(dogs);
   </script>
 </body>
 </html>
