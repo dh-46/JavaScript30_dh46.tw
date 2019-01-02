@@ -18,10 +18,10 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 |5.|Flex Panel Gallery 彈性盒子練習||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/05%20-%20Flex%20Panel%20Gallery)|
 |6.|Type Ahead 美國城市與州名搜尋||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/06%20-%20Type%20Ahead)|
 |7.|Array Cardio Day 2 陣列操作練習 2||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/07%20-%20Array%20Cardio%20Day%202)|
-|8.|Fun with HTML5 Canvas|||
-|9.|Dev Tools Domination|||
-|10.|Hold Shift and Check Checkboxes|||
-|11.|Custom Video Player|||
+|8.|Fun with HTML5 Canvas||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/08%20-%20Fun%20with%20HTML5%20Canvas)|
+|9.|Dev Tools Domination||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/09%20-%20Dev%20Tools%20Domination)|
+|10.|Hold Shift and Check Checkboxes||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes)|
+|11.|Custom Video Player||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/11%20-%20Custom%20Video%20Player)|
 |12.|Key Sequence Detection|||
 |13.|Slide in on Scroll|||
 |14.|JavaScript References VS Copying|||
