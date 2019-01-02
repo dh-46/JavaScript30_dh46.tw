@@ -96,6 +96,49 @@
   </div>
 
 <script>
+// 所有的選項
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+// 按下shift前的最後一個
+let lastChecked;
+
+// 處理事件
+function handleCheck(e){
+  // 1. 是不是第一個被選/是不是最後一個
+  // => 第一個要被放入變數中記著 (沒有按著shift前的最後一個?)
+  // 2. 如果你不是第一個 => 你有沒有按著shift
+  // 3. 有的話就要幫他選取在中間的
+  // 怎麼知道是在中間的? => 用index? 反向的選會很麻煩 => 用boolean判斷? (inBetween)
+  // 當判斷inBetween是true，在loop所有選項的時候，那些在中間的就要check
+  // 按住shift並按下選項的時候要loop(檢查到last/this就改成inBetween是true，在檢查到一次就改為false => 頭跟尾)
+  
+  let inBetween = false;
+
+  if (e.shiftKey && this.checked){
+    // shiftKey down 而且是被選取的，因為取消選取也會觸發event
+    // 你選了最後一個
+    checkboxes.forEach(checkbox => {
+      if (checkbox === this || checkbox === lastChecked){
+        // 為什麼不直接為true => 不論是頭或尾，只要碰到第二次就是為false，代表離開該範圍
+        inBetween = !inBetween;
+      }
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
+  }
+
+  lastChecked = this;
+  // console.log(e.shiftKey);
+}
+
+// 加上傾聽器 (click event 即便是使用鍵盤也可偵測，所以比使用change好)
+checkboxes.forEach(checkbox => {
+  // 確保checkbox被選擇時有收到通知
+  checkbox.addEventListener('click', handleCheck);
+});
+
+
 </script>
 </body>
 </html>
