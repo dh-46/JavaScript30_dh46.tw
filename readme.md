@@ -22,22 +22,22 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 |9.|Dev Tools Domination||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/09%20-%20Dev%20Tools%20Domination)|
 |10.|Hold Shift and Check Checkboxes||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes)|
 |11.|Custom Video Player||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/11%20-%20Custom%20Video%20Player)|
-|12.|Key Sequence Detection|||
-|13.|Slide in on Scroll|||
-|14.|JavaScript References VS Copying|||
-|15.|LocalStorage|||
-|16.|Mouse Move Shadow|||
-|17.|Sort Without Articles|||
-|18.|Adding Up Times with Reduce|||
-|19.|Webcam Fun|||
-|20.|Speech Detection|||
-|21.|Geolocation|||
-|22.|Follow Along Link Highlighter|||
-|23.|Speech Synthesis|||
-|24.|Sticky Nav|||
-|25.|Event Capture, Propagation, Bubbling and Once|||
-|26.|Stripe Follow Along Nav|||
-|27.|Click and Drag|||
-|28.|Video Speed Controller|||
-|29.|Countdown Timer|||
-|30.|Whack A Mole|||
+|12.|Key Sequence Detection||[NOTE]()|
+|13.|Slide in on Scroll||[NOTE]()|
+|14.|JavaScript References VS Copying||[NOTE]()|
+|15.|LocalStorage||[NOTE]()|
+|16.|Mouse Move Shadow||[NOTE]()|
+|17.|Sort Without Articles||[NOTE]()|
+|18.|Adding Up Times with Reduce||[NOTE]()|
+|19.|Webcam Fun||[NOTE]()|
+|20.|Speech Detection||[NOTE]()|
+|21.|Geolocation||[NOTE]()|
+|22.|Follow Along Link Highlighter||[NOTE]()|
+|23.|Speech Synthesis||[NOTE]()|
+|24.|Sticky Nav||[NOTE]()|
+|25.|Event Capture, Propagation, Bubbling and Once||[NOTE]()|
+|26.|Stripe Follow Along Nav||[NOTE]()|
+|27.|Click and Drag||[NOTE]()|
+|28.|Video Speed Controller||[NOTE]()|
+|29.|Countdown Timer||[NOTE]()|
+|30.|Whack A Mole||[NOTE]()|

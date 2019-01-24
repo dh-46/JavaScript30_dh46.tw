@@ -7,6 +7,27 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const secretCode = "helloworld";
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    // 將每個輸入放到暫存中
+    pressed.push(e.key);
+    // 剪下特定的陣列段落，負數代表從陣列末端往前切。
+    // 開始的位置會永遠是最後面的位置, 結束的位置從一開始陣列未達到密語的長度，到最後會變成恆1。
+    var startIndex = -secretCode.length-1;
+    var endIndex = pressed.length - secretCode.length;
+    console.log(startIndex + ":" + endIndex);
+    pressed.splice(startIndex, endIndex);
+
+    // 判斷PRESSED陣列內容是否與密語相符
+    if (pressed.join('').includes(secretCode)) {
+      console.log("You Got It!");
+      cornify_add();
+    }
+    console.log(pressed);
+  })
 </script>
 </body>
 </html>
