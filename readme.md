@@ -22,7 +22,7 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 |9.|Dev Tools Domination||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/09%20-%20Dev%20Tools%20Domination)|
 |10.|Hold Shift and Check Checkboxes||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes)|
 |11.|Custom Video Player||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/11%20-%20Custom%20Video%20Player)|
-|12.|Key Sequence Detection||[NOTE]()|
+|12.|Key Sequence Detection||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/12%20-%20Key%20Sequence%20Detection)|
 |13.|Slide in on Scroll||[NOTE]()|
 |14.|JavaScript References VS Copying||[NOTE]()|
 |15.|LocalStorage||[NOTE]()|
