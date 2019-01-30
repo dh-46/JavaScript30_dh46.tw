@@ -81,6 +81,8 @@ console.log(team3); // 新陣列被修改
 console.log(players); // 原陣列不變
 ```
 
+參考資料: [MDN: Array.concat()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+
 #### ES6 Spread
 
 > 利用ES6 Spread。
