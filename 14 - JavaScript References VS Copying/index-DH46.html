@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+  <h1>Day14_JS Reference VS Copy</h1>
+  <h3>Check the console!</h3>
+  <script>
+    // start with strings, numbers and booleans (基本型別的引用與複製)
+
+    // numbers
+    // let age = 100;
+    // let age2 = age;
+    // console.log(age , age2);
+    // age = 200;
+    // console.log(age , age2);
+
+    // strings
+    // let name = "DH46";
+    // let name2 = name;
+    // console.log(name, name2);
+    // name = "DH45.tw";
+    // console.log(name, name2);
+
+    // Let's say we have an array (物件的引用與複製)
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    // const team = players;
+    // console.log(players, team);
+
+    // You might think we can just do something like this:
+    // team[3] = "Lux";
+    // console.log(players, team);
+    // however what happens when we update that array? (為什麼沒有像基本型別一樣的結果，而是兩個變數的陣列都被改變了?)
+    // now here is the problem!
+    // oh no - we have edited the original array too!
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    // console.warn("因為team不是一個陣列，而是一個指向players陣列的參考。所以不論指向給多少個變數，最終都會找回最原始的陣列物件去做修改。");
+    
+    // So, how do we fix this? We take a copy instead! (解法)
+
+    // one way (利用splice方法切割後會回傳新陣列的特性。)
+    // const team2 = players.slice();
+    // team2[3] = "Taiwan"
+    // console.log(team2);
+    // console.log(players);
+
+    // or create a new array and concat the old one in (建立一個新陣列再concat舊陣列。concat() 方法被用來合併兩個或多個陣列。此方法不會改變現有的陣列，回傳一個包含呼叫者陣列本身的值，作為代替的是回傳一個新陣列。)
+
+    // const team3 = [].concat(players);
+    // team3[3] = "ThisIsTeam3";
+    // console.log(team3);
+
+    // or use the new ES6 Spread (利用ES6 Spread)
+    // const team4 = [...players];
+    // team4[3] = "ThisIsTeam4";
+    // console.log(team4);
+
+    // 還有 Array.from();
+
+    // const team5 = Array.from(players);
+    // team5[3] = "Team5";
+    // console.log(team5);
+
+    // now when we update it, the original one isn't changed
+
+    // The same thing goes for objects, let's say we have a person object
+
+    // with Objects
+    // const person = {
+    //   name: 'Wes Bos',
+    //   age: 80
+    // };
+
+    // and think we make a copy: (與陣列的情況相同，不可這樣複製。)
+    
+    // const captain = person;
+    // captain.number = 123;
+    // console.log(captain, person);
+
+    // how do we take a copy instead? (利用Object.Assign()方法)
+    // 引數1: 空物件; 2: 要複製的物件; 3: 要新增/修改的物件參數; 
+    // const cap2 = Object.assign({}, person, {number: 99, age:20});
+    // console.log(cap2);
+    // console.log(person);
+
+    // We will hopefully soon see the object ...spread
+    // const cap3 = {...person};
+    // console.log(cap3);
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    // (注意! 以上的陣列與物件複製方法都是淺層複製)
+    // 例如...
+
+    const coolman = {
+      name:'superman',
+      age: 25,
+      social: {
+        facebook: '@testing1',
+        instagram: '@testing2'
+      }
+    }
+    console.log(coolman);
+
+    // 複製物件後再修改裡面的social物件 => 發現新舊物件裡的social都被修改!
+    const coolman2 = Object.assign({},coolman, {name: 'ironMan'});
+    console.log(coolman2);
+    coolman2.social.facebook = 'helloWorld';
+    console.log(coolman, coolman2);
+
+    // 解法1: 網路上的 cloneDeep 方法
+
+    // 解法2: poorman's deep clone --> Wes Bos不推薦 (效能問題待確認)
+    // 其實就是先將原物件利用stringify轉成字串，再透過JSON.parse方法形成新物件。
+    const coolman3 = JSON.parse(JSON.stringify(coolman));
+    coolman3.social.facebook = 'TaiwanIsNotPartOfChina';
+    console.log(coolman3);
+
+  </script>
+
+</body>
+</html>
