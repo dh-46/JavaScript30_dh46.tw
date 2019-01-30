@@ -131,7 +131,7 @@ console.log(cap3);
 console.log(person);
 ```
 
-==注意! 以上的陣列與物件複製方法都是淺層複製==
+**注意! 以上的陣列與物件複製方法都是淺層複製**
 
 ### Object_Deep Clone
 
@@ -160,7 +160,7 @@ console.log(coolman, coolman2);
 
 > 透過JSON.stringify轉字串，再透過JSON.parse轉成物件。
 
-==Wes Bos不推薦 (效能問題待確認)==
+**Wes Bos不推薦 (效能問題待確認)**
 
 ```javascript
 const coolman3 = JSON.parse(JSON.stringify(coolman));
