@@ -25,7 +25,7 @@ JavaScript 30 天練習挑戰是wesbos所設計的JavaScript練習課程，
 |12.|Key Sequence Detection||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/12%20-%20Key%20Sequence%20Detection)|
 |13.|Slide in on Scroll||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/13%20-%20Slide%20in%20on%20Scroll)|
 |14.|JavaScript References VS Copying||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/14%20-%20JavaScript%20References%20VS%20Copying)|
-|15.|LocalStorage||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/15%20-%20LocalStorage)|
+|15.|Local Storage and Event Delegation||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/15%20-%20LocalStorage)|
 |16.|Mouse Move Shadow||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/16%20-%20Mouse%20Move%20Shadow)|
 |17.|Sort Without Articles||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/17%20-%20Sort%20Without%20Articles)|
 |18.|Adding Up Times with Reduce||[NOTE](https://github.com/dh-46/JavaScript30_dh46.tw/tree/master/18%20-%20Adding%20Up%20Times%20with%20Reduce)|

@@ -1,7 +1,8 @@
 
     html {
       box-sizing: border-box;
-      background: url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+      /* background: url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat; */
+      background: url('pics/restaurant.jpg') center no-repeat;
       background-size: cover;
       min-height: 100vh;
       display: flex;
