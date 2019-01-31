@@ -184,6 +184,8 @@ function handleItemClick(e) {
 itemsList.addEventListener('click', handleItemClick);
 ```
 
+[MDN: Array.splice()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
 ## 筆記
 
 ### Local Storage
@@ -195,6 +197,8 @@ itemsList.addEventListener('click', handleItemClick);
   => 因為LS的value只能儲存string，它會自動呼叫toString()。
 
 > 補充: 物件陣列如果直接toString() => 一樣會"[object Object],[object Object]"
+
+[MDN: Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 ### Event Delegation (解決事件重複綁定)
 
